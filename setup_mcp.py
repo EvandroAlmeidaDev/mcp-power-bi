@@ -1,7 +1,7 @@
 """
 Auto-Setup para IDEs
 
-Detecta IDEs instaladas (Cursor, VS Code, Claude Desktop, Windsurf)
+Detecta IDEs instaladas (Cursor, VS Code, Claude Desktop, Windsurf, Antigravity, Trae)
 e configura automaticamente o servidor MCP.
 
 Uso:
@@ -57,6 +57,16 @@ IDE_CONFIGS = {
     },
     "windsurf": {
         "path": Path.home() / ".windsurf" / "mcp.json",
+        "key": "mcpServers",
+        "format": "mcp_json"
+    },
+    "antigravity": {
+        "path": Path.home() / ".gemini" / "antigravity" / "mcp_config.json",
+        "key": "mcpServers",
+        "format": "mcp_json"
+    },
+    "trae": {
+        "path": Path.home() / ".trae" / "mcp.json",
         "key": "mcpServers",
         "format": "mcp_json"
     },
