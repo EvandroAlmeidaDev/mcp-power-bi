@@ -13,7 +13,7 @@
 - **✍️ Write-Back**: Create/update DAX measures programmatically via TOM
 - **🎨 HTML Visuals**: Generate premium KPI cards, progress rings, and comparison charts
 - **⚡ Custom Visuals**: Full TypeScript visual with working JavaScript (filters, sorting, dark mode)
-- **🖥️ Multi-IDE Support**: Auto-configure for VS Code, Cursor, Claude Desktop, and Windsurf
+- **🖥️ Multi-IDE Support**: Auto-configure for VS Code, Cursor, Claude Desktop, Windsurf, Antigravity, and Trae
 
 ## 📋 Requirements
 
