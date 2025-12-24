@@ -33,7 +33,7 @@ def get_mcp_config() -> dict:
     project_root = get_project_root()
     return {
         "command": get_python_path(),
-        "args": ["-m", "src.server"],
+        "args": ["-X", "utf8", "-m", "src.server"],
         "cwd": str(project_root)
     }
 
