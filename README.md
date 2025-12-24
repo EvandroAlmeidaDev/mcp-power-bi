@@ -76,14 +76,6 @@ Or:
 | `preview_visual_local` | Save HTML preview locally |
 | `apply_conditional_format` | Apply conditional formatting rules |
 
-## 🎨 Available Themes
-
-- **Dark Neon** - Vibrant gradients on dark background
-- **Glassmorphism** - Frosted glass effect
-- **Corporate Clean** - Professional light theme
-- **Executive Dark** - Sophisticated dark theme
-- **Data Viz Pro** - Optimized for data visualization
-
 ## 📦 Custom Visual
 
 The project includes a fully-functional **Power BI Custom Visual** with:
