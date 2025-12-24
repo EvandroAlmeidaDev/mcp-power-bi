@@ -1,0 +1,14 @@
+# MCP Framework
+fastmcp>=2.0.0
+
+# Power BI Connection (ADOMD.NET via CLR)
+pythonnet>=3.0.3
+
+# Data manipulation
+pandas>=2.0.0
+
+# Process detection (find Power BI port)
+psutil>=5.9.0
+
+# Environment variables
+python-dotenv>=1.0.0

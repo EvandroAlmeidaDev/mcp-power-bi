@@ -1,0 +1,16 @@
+# Node
+node_modules/
+dist/
+.tmp/
+
+# Build artifacts
+*.pbiviz
+webpack.statistics.*.html
+package-lock.json
+
+# IDE
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db

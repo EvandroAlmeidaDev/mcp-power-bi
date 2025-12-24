@@ -1,0 +1,92 @@
+{
+    "dataRoles": [
+        {
+            "name": "category",
+            "displayName": "Categoria (Municipio/Estado)",
+            "displayNameKey": "Visual_Category",
+            "kind": "Grouping"
+        },
+        {
+            "name": "region",
+            "displayName": "Regiao/UF",
+            "displayNameKey": "Visual_Region",
+            "kind": "Grouping"
+        },
+        {
+            "name": "pibTotal",
+            "displayName": "PIB Total",
+            "displayNameKey": "Visual_PIB",
+            "kind": "Measure"
+        },
+        {
+            "name": "pibPerCapita",
+            "displayName": "PIB per Capita",
+            "displayNameKey": "Visual_PIBPerCapita",
+            "kind": "Measure"
+        },
+        {
+            "name": "population",
+            "displayName": "Populacao",
+            "displayNameKey": "Visual_Population",
+            "kind": "Measure"
+        },
+        {
+            "name": "count",
+            "displayName": "Contagem",
+            "displayNameKey": "Visual_Count",
+            "kind": "Measure"
+        }
+    ],
+    "dataViewMappings": [
+        {
+            "categorical": {
+                "categories": {
+                    "select": [
+                        {
+                            "for": {
+                                "in": "category"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "region"
+                            }
+                        }
+                    ],
+                    "dataReductionAlgorithm": {
+                        "top": {
+                            "count": 1000
+                        }
+                    }
+                },
+                "values": {
+                    "select": [
+                        {
+                            "for": {
+                                "in": "pibTotal"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "pibPerCapita"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "population"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "count"
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "privileges": [],
+    "supportsHighlight": true,
+    "supportsMultiVisualSelection": true
+}

@@ -1,0 +1,57 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+*.egg-info/
+*.egg
+.eggs/
+
+# Node.js
+node_modules/
+dist/
+*.pbiviz
+.npm
+package-lock.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Certificates (local dev)
+localhost.cer
+*.cer
+*.pem
+*.pfx
+
+# Temp files
+temp_*.txt
+*.tmp
+*.temp
+*.log
+
+# Local test files
+previews/
+scripts/
+tests/
+
+# OS
+Thumbs.db
+.DS_Store
+Desktop.ini
+
+# Power BI
+*.pbix
+*.pbit
