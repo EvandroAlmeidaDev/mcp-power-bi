@@ -1,93 +1,93 @@
-# MCP Power BI
+# Servidor MCP para Power BI
 
-[![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Power BI](https://img.shields.io/badge/Power%20BI-Desktop-F2C811.svg)](https://powerbi.microsoft.com/)
+Este projeto implementa um servidor baseado no protocolo MCP (Model Context Protocol) projetado para integrar assistentes de IA diretamente ao Power BI Desktop. Ele permite a descoberta automatizada de esquemas, geração de medidas DAX e a criação de visuais avançados baseados em HTML/CSS dentro do ambiente do Power BI.
 
-> 🚀 MCP Server for Power BI Desktop - Generate stunning HTML/CSS visuals and custom Power BI visuals with AI assistance.
+A solução é voltada para desenvolvedores e analistas de dados que desejam utilizar agentes de IA (como Claude, Cursor ou Antigravity) para auxiliar na construção e estilização de painéis com componentes de alta fidelidade que superam as limitações dos visuais padrão do Power BI.
 
-## ✨ Features
+## Funcionalidades Principais
 
-- **🔌 Power BI Connection**: Auto-detect and connect to running Power BI Desktop instances
-- **📊 Schema Reading**: Extract tables, columns, and measures from your data model
-- **✍️ Write-Back**: Create/update DAX measures programmatically via TOM
-- **🎨 HTML Visuals**: Generate premium KPI cards, progress rings, and comparison charts
-- **⚡ Custom Visuals**: Full TypeScript visual with working JavaScript (filters, sorting, dark mode)
-- **🖥️ Multi-IDE Support**: Auto-configure for VS Code, Cursor, Claude Desktop, Windsurf, Antigravity, and Trae
+O servidor disponibiliza um conjunto de ferramentas que permitem a um agente de IA:
 
-## 📋 Requirements
+*   **Descoberta de Metadados do Modelo**: Detectar automaticamente instâncias ativas do Power BI Desktop e extrair estruturas de tabelas, nomes de colunas e medidas existentes.
+*   **Gerenciamento Programático de DAX**: Criar e atualizar medidas diretamente no modelo utilizando o Tabular Object Model (TOM).
+*   **Geração de Visuais**: Produzir código complexo em HTML/CSS para cartões de KPI, anéis de progresso e gráficos de comparação, encapsulados em medidas DAX para uso com o visual "HTML Content".
+*   **Tematização e Estilização**: Aplicar sistemas de design consistentes e regras de formatação condicional baseadas em temas profissionais predefinidos.
+*   **Extensão de Visual Personalizado**: Inclui um visual dedicado desenvolvido em TypeScript, oferecendo recursos como filtragem interativa, ordenação e desempenho superior aos containers HTML padrão.
 
-- **Windows 10/11** (Power BI Desktop is Windows-only)
-- **Python 3.12+**
-- **Power BI Desktop** (running with a model loaded)
-- **Node.js 18+** (for custom visual development)
+## Pré-requisitos
 
-### Optional (for Write-Back)
+Para utilizar este servidor, seu ambiente deve atender aos seguintes requisitos:
 
-- [SQL Server AMO SDK](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64) - Required for TOM write operations
+*   **Sistema Operacional**: Windows 10 ou 11 (necessário para compatibilidade com o Power BI Desktop).
+*   **Python**: Versão 3.12 ou superior.
+*   **Power BI Desktop**: Deve estar em execução com um modelo de dados carregado para que as ferramentas de conexão funcionem.
+*   **Node.js**: Versão 18 ou superior (necessário apenas se pretender compilar ou modificar o visual personalizado).
+*   **Bibliotecas de Cliente Analysis Services**: O SDK SQL Server AMO é recomendado para operações avançadas de escrita via TOM.
 
-## 🚀 Quick Start
+## Instalação e Configuração
 
-### 1. Clone and Install
+### 1. Configuração do Repositório
+
+Clone o repositório e navegue até o diretório do projeto:
 
 ```bash
-git clone https://github.com/yourusername/mcp-power-bi.git
+git clone https://github.com/seuusuario/mcp-power-bi.git
 cd mcp-power-bi
-
-# Run the installer
-install.bat
 ```
 
-Or manually:
+### 2. Configuração do Ambiente
 
+Você pode utilizar o instalador automatizado fornecido ou configurar o ambiente manualmente:
+
+**Abordagem automatizada:**
+Execute o arquivo `install.bat`. Este script criará um ambiente virtual e instalará todas as dependências Python necessárias.
+
+**Abordagem manual:**
 ```bash
 python -m venv .venv
 .venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-### 2. Configure IDE
+### 3. Integração com IDEs
+
+Para disponibilizar este servidor ao seu assistente de IA, execute o utilitário de configuração:
 
 ```bash
 python setup_mcp.py
 ```
 
-This auto-configures the MCP server for your installed IDEs.
+Este script detecta as IDEs suportadas (VS Code, Cursor, Claude Desktop, Windsurf, Antigravity e Trae) e adiciona a configuração necessária aos respectivos arquivos de definição.
 
-### 3. Start the Server
+## Operação do Servidor
 
-```bash
-start.bat
-```
-
-Or:
+O servidor pode ser iniciado através do script `start.bat` ou executando o módulo diretamente:
 
 ```bash
 .venv\Scripts\python -m src.server
 ```
 
-## 🛠️ MCP Tools
+Após a inicialização, as seguintes ferramentas tornam-se disponíveis para o cliente MCP conectado:
 
-| Tool | Description |
-|------|-------------|
-| `connect_and_scan_schema` | Connect to Power BI and read model schema |
-| `list_style_presets` | List available visual themes |
-| `generate_html_measure` | Create HTML visual as DAX measure |
-| `preview_visual_local` | Save HTML preview locally |
-| `apply_conditional_format` | Apply conditional formatting rules |
+| Ferramenta | Descrição |
+| :--- | :--- |
+| `connect_and_scan_schema` | Estabelece conexão com o Power BI e retorna a estrutura do modelo. |
+| `list_style_presets` | Retorna os temas visuais e tokens de design disponíveis. |
+| `generate_html_measure` | Gera o código DAX para um componente visual baseado em HTML. |
+| `preview_visual_local` | Cria um arquivo HTML temporário para visualização em um navegador. |
+| `apply_conditional_format` | Gera regras DAX para formatação dinâmica de cores e ícones. |
 
-## 📦 Custom Visual
+## Visual Personalizado do Power BI
 
-The project includes a fully-functional **Power BI Custom Visual** with:
+Além do servidor MCP, este repositório contém um visual personalizado pronto para produção, localizado em `custom-visual/DashboardPIB`. Este visual oferece uma alternativa mais robusta aos visualizadores HTML padrão, suportando:
 
-- ✅ Working JavaScript (not blocked like HTML Content)
-- ✅ Interactive filters
-- ✅ Sortable tables
-- ✅ Dark/Light mode toggle
-- ✅ Animated bar charts
-- ✅ Auto-generated insights
+*   Filtragem e ordenação interativa de dados.
+*   Temas dinâmicos com suporte a modo claro e escuro.
+*   Animações nativas e gráficos de barras integrados.
 
-### Build the Visual
+### Compilando o Visual
+
+Para empacotar o visual para uso no Power BI:
 
 ```bash
 cd custom-visual/DashboardPIB
@@ -95,82 +95,26 @@ npm install
 pbiviz package
 ```
 
-The `.pbiviz` file will be in the `dist/` folder.
+O arquivo `.pbiviz` resultante será gerado no diretório `dist`.
 
-## 📁 Project Structure
+## Estrutura do Projeto
 
-```
-mcp-power-bi/
-├── src/
-│   ├── server.py           # MCP Server
-│   ├── pbi_connector.py    # Power BI connection (ADOMD + TOM)
-│   ├── utils.py            # Utilities
-│   └── ux_engine/
-│       ├── tokens.py       # Theme definitions
-│       ├── builder.py      # Visual builder
-│       └── components/     # HTML components
-├── custom-visual/
-│   └── DashboardPIB/       # Power BI Custom Visual source
-├── install.bat             # One-click installer
-├── setup_mcp.py            # IDE configurator
-└── requirements.txt        # Python dependencies
-```
+*   `src/`: Código-fonte principal em Python.
+    *   `server.py`: Implementação do servidor MCP e definição de ferramentas.
+    *   `pbi_connector.py`: Integração com ADOMD.NET e Tabular Object Model.
+    *   `ux_engine/`: Lógica para geração de componentes HTML e temas.
+*   `custom-visual/`: Código-fonte do visual TypeScript para Power BI.
+*   `install.bat` / `start.bat`: Utilitários para gerenciamento do ambiente.
+*   `setup_mcp.py`: Ferramenta de configuração para integração com IDEs.
 
-## 🔧 Configuration
+## Detalhes de Configuração
 
-Copy `.env.example` to `.env` and adjust:
+Configurações avançadas podem ser gerenciadas via arquivo `.env`. Consulte `.env.example` para opções disponíveis, como caminhos explícitos para DLLs do Analysis Services caso não estejam no cache global de assembléias.
 
-```env
-# Optional: Custom DLL paths
-ADOMD_DLL_PATH=C:\path\to\Microsoft.AnalysisServices.AdomdClient.dll
-TOM_DLL_PATH=C:\path\to\Microsoft.AnalysisServices.Tabular.dll
+## Licença
 
-# Log level
-LOG_LEVEL=INFO
-```
+Este projeto é distribuído sob a Licença MIT. Informações detalhadas podem ser encontradas no arquivo [LICENSE](LICENSE).
 
-## 📝 Usage Examples
+## Agradecimentos
 
-### Generate a KPI Card
-
-```python
-from src.ux_engine.builder import UXBuilder
-
-builder = UXBuilder(theme="dark_neon")
-result = builder.build_component(
-    component_type="kpi_card",
-    measure_expression="[Total Sales]",
-    title="Revenue",
-    animation="pulse"
-)
-print(result["dax_code"])
-```
-
-### Connect to Power BI
-
-```python
-from src.pbi_connector import PowerBIConnector
-
-connector = PowerBIConnector()
-connector.connect()
-schema = connector.get_schema()
-
-for table in schema.tables:
-    print(f"Table: {table.name}")
-    for col in table.columns:
-        print(f"  - {col.name}")
-```
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- [FastMCP](https://github.com/jlowin/fastmcp) - MCP framework
-- [pythonnet](https://pythonnet.github.io/) - .NET integration
-- [Power BI Visuals SDK](https://github.com/microsoft/PowerBI-visuals) - Custom visual development
+Este projeto utiliza o [FastMCP](https://github.com/jlowin/fastmcp) para a estrutura MCP, [pythonnet](https://pythonnet.github.io/) para interoperabilidade com .NET e o [SDK de Visuais do Power BI](https://github.com/microsoft/PowerBI-visuals) para o desenvolvimento de componentes personalizados.
